@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile</title>
+
+  <!-- Google Font: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Prajwal Kadnar</div>
+      <ul class="nav-links">
+        <li><a href="#home">🏠 Home</a></li>
+        <li><a href="#about">🙋‍♂️ About</a></li>
+        <li><a href="#contact">📩 Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <img src="image.png" alt="My Photo" class="profile-pic" />
+    <h1>Prajwal Kadnar</h1>
+    <p>Full Stack Developer | Flutter & Java Programmer</p>
+  </section>
+
+  <!-- About -->
+  <section class="skills" id="about">
+    <h2>What I’ve Learned</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>React, Node.js, MongoDB</li>
+      <li>Java – Core Java, OOPs, JDBC</li>
+      <li>Flutter – Dart, UI Widgets, Firebase Integration</li>
+      <li>Figma, Photoshop, UI/UX Design</li>
+    </ul>
+  </section>
+
+  <section class="projects">
+    <h2>My Projects</h2>
+    <ul>
+      <li><strong>Flutter App:</strong> Task Manager – Firebase Auth & Realtime DB</li>
+      <li><strong>Java App:</strong> Library Management System – Swing + JDBC + MySQL</li>
+    </ul>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2>Send Me a Message</h2>
+    <form id="contactForm">
+      <input type="text" name="user_name" placeholder="Your Name" required />
+      <input type="email" name="user_email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message..." required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <p id="responseMessage"></p>
+  </section>
+
+  <script>
+    emailjs.init("J4b5OWT3fR9Cv-vwG");
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      emailjs.sendForm('service_i45b4qx', 'template_0f5eatn', this)
+        .then(() => {
+          document.getElementById('responseMessage').innerText = '✅ Message sent successfully!';
+          this.reset();
+        }, (error) => {
+          document.getElementById('responseMessage').innerText = '❌ Error: ' + error.text;
+        });
+    });
+  </script>
+
+</body>
+</html>
